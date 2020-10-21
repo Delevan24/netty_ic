@@ -2,6 +2,7 @@ package com.shengsiyuan.java8.study.collector;
 
 import com.google.common.collect.Lists;
 
+import javax.swing.text.html.parser.Entity;
 import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.BinaryOperator;
@@ -15,6 +16,7 @@ public class CollectorTest {
         Student wangwu = new Student("wangwu", 60, 22);
         Student songliu = new Student("songliu", 80, 23);
         ArrayList<Student> students = Lists.newArrayList(zhangsan, lisi, wangwu, songliu);
+
 
         students.stream().min(Comparator.comparingInt(Student::getScore)).ifPresent(System.out::println);
         //students.stream().mapToInt(Student::getScore).min().ifPresent(System.out::println);

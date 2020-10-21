@@ -14,34 +14,37 @@ repositories {
 }
 
 dependencies {
-//    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile("junit:junit:4.12")
 
-    // https://mvnrepository.com/artifact/io.netty/netty-all
-    // compile group: 'io.netty', name: 'netty-all', version: '4.1.48.Final'
-    compile("io.netty:netty-all:4.1.48.Final")
+    testCompile(
+            "junit:junit:4.12",
+            "io.projectreactor:reactor-test:3.4.0-SNAPSHOT"
+    )
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.2.RELEASE'
 
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    compile(
+            "org.slf4j:slf4j-api:1.7.25",
+            "io.netty:netty-all:4.1.48.Final",
+            "com.google.guava:guava:29.0-jre",
+            "io.projectreactor:reactor-core:3.4.0-SNAPSHOT",
+            "org.apache.flink:flink-java:1.10.1",
+            "com.google.protobuf:protobuf-java:3.12.2",
+            "com.google.protobuf:protobuf-java-util:3.12.2",
+            "io.lettuce:lettuce-core:5.3.1.RELEASE",
+            "org.apache.thrift:libthrift:0.13.0",
+            "io.reactivex.rxjava3:rxjava:3.0.0",
+            "org.springframework:spring-context:4.1.6.RELEASE"
+    )
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
 
-    // https://mvnrepository.com/artifact/com.google.guava/guava
-    compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+    //导入slf4j依赖包，导入下面的两个包，其中logback-classic会导入slf4j包到项目的ExternalLibraries。 logback-core知识可以百度。
+    compile('ch.qos.logback:logback-core:1.2.3')
 
-    // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+    compile('ch.qos.logback:logback-classic:1.2.3')
 
-    compile "io.projectreactor:reactor-core:3.4.0-SNAPSHOT"
-    testCompile("io.projectreactor:reactor-test:3.4.0-SNAPSHOT")
+    //导入slf4j包，不导入这个包会报错：SLF4J: Failed to load class
+    //"org.slf4j.impl.StaticLoggerBinder"
 
-    // https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java
-//    providedCompile group: 'org.apache.flink', name: 'flink-streaming-java_2.12', version: '1.10.1'
-    // https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-scala
-//    providedCompile group: 'org.apache.flink', name: 'flink-streaming-scala_2.12', version: '1.10.1'
-
-
-    // https://mvnrepository.com/artifact/org.apache.flink/flink-java
-    compile group: 'org.apache.flink', name: 'flink-java', version: '1.10.1'
-
-
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 
 }

@@ -1,5 +1,6 @@
 package com.shengsiyuan.java8.study.day2;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -10,6 +11,7 @@ import java.time.Duration;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class ReactorTest {
     private Flux<Integer> generateFluxFrom1To6() {
         return Flux.just(1, 2, 3, 4, 5, 6);
@@ -17,6 +19,12 @@ public class ReactorTest {
 
     private Mono<Integer> generateMonoWithError() {
         return Mono.error(new Exception("some error"));
+    }
+
+    @Test
+    public void test() {
+        String ss = "this is my log test";
+        log.info(ss + "success!");
     }
 
     @Test
@@ -89,8 +97,8 @@ public class ReactorTest {
     @Test
     public void testErrorHandling() {
         Flux.range(1, 6)
-                .map(i -> 10/(i-3)) // 1
-                .map(i -> i*i)
+                .map(i -> 10 / (i - 3)) // 1
+                .map(i -> i * i)
                 .subscribe(System.out::println, System.err::println);
     }
 
